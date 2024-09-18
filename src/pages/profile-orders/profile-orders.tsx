@@ -7,7 +7,6 @@ import { getOrdesThunk } from '@slices';
 
 export const ProfileOrders: FC = () => {
   const dispatch = useDispatch();
-  /** TODO: взять переменную из стора */
   const orders: TOrder[] = useSelector((state) => state.order.orders);
 
   useEffect(() => {

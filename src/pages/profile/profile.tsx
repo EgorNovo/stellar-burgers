@@ -5,7 +5,6 @@ import { useDispatch, useSelector } from '@store';
 import { updateUserThunk } from '@slices';
 
 export const Profile: FC = () => {
-  /** TODO: взять переменную из стора */
   const dispatch = useDispatch();
   const user = useSelector((state) => state.authorization.user);
 

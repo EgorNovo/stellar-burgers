@@ -10,7 +10,6 @@ export const OrderInfo: FC = () => {
   const dispatch = useDispatch();
   const { number } = useParams();
 
-  /** TODO: взять переменные orderData и ingredients из стора */
   const orderData = useSelector((state) => state.order.orderModalData);
   const ingredients: TIngredient[] = useSelector(
     (state) => state.ingredients.ingredients
@@ -20,7 +19,6 @@ export const OrderInfo: FC = () => {
     dispatch(getOrderByNumberThunk(Number(number)));
   }, [dispatch]);
 
-  /* Готовим данные для отображения */
   const orderInfo = useMemo(() => {
     if (!orderData || !ingredients.length) return null;
 

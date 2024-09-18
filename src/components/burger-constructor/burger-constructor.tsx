@@ -1,5 +1,5 @@
 import { FC, useMemo } from 'react';
-import { Navigate } from 'react-router-dom';
+import { Navigate, useNavigate } from 'react-router-dom';
 
 import { TConstructorIngredient } from '@utils-types';
 import { BurgerConstructorUI } from '@ui';
@@ -7,8 +7,8 @@ import { useSelector, useDispatch } from '@store';
 import { orderBurgerThunk, reset, resetBuilder } from '@slices';
 
 export const BurgerConstructor: FC = () => {
-  /** TODO: взять переменные constructorItems, orderRequest и orderModalData из стора */
   const dispatch = useDispatch();
+  const navigate = useNavigate();
 
   const constructorItems = useSelector((state) => state.builder);
   const { isAuthenticated } = useSelector((state) => state.authorization);
@@ -19,16 +19,16 @@ export const BurgerConstructor: FC = () => {
     if (!constructorItems.bun || orderRequest) return;
 
     if (!isAuthenticated) {
-      return <Navigate to='/login' state={{ from: location }} />;
+      navigate('/login');
+    } else {
+      const order = [
+        constructorItems.bun._id,
+        ...constructorItems.ingredients.map((ingredient) => ingredient._id),
+        constructorItems.bun._id
+      ];
+
+      dispatch(orderBurgerThunk(order));
     }
-
-    const order = [
-      constructorItems.bun._id,
-      ...constructorItems.ingredients.map((ingredient) => ingredient._id),
-      constructorItems.bun._id
-    ];
-
-    dispatch(orderBurgerThunk(order));
   };
 
   const closeOrderModal = () => {

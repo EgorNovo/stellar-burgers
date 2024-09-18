@@ -7,7 +7,6 @@ import { useSelector } from '@store';
 export const IngredientDetails: FC = () => {
   const param = useParams();
 
-  /** TODO: взять переменную из стора */
   const { ingredients } = useSelector((state) => state.ingredients);
   const [ingredientData] = ingredients.filter((item) => item._id === param.id);
 

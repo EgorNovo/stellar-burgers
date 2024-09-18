@@ -31,31 +31,34 @@ export const RegisterUI: FC<RegisterUIProps> = ({
             <Input
               type='text'
               placeholder='Имя'
-              onChange={(e) => setUserName(e.target.value)}
+              onChange={(e) => setUserName(e)}
               value={userName}
               name='name'
               error={false}
               errorText=''
               size='default'
+              autoComplete='given-name'
             />
           </div>
           <div className='pb-6'>
             <Input
               type='email'
               placeholder='E-mail'
-              onChange={(e) => setEmail(e.target.value)}
+              onChange={(e) => setEmail(e)}
               value={email}
               name={'email'}
               error={false}
               errorText=''
               size={'default'}
+              autoComplete='email'
             />
           </div>
           <div className='pb-6'>
             <PasswordInput
-              onChange={(e) => setPassword(e.target.value)}
+              onChange={(e) => setPassword(e)}
               value={password}
               name='password'
+              autoComplete='new-password'
             />
           </div>
           <div className={`pb-6 ${styles.button}`}>

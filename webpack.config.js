@@ -80,7 +80,8 @@ module.exports = {
       '@slices': path.resolve(__dirname, './src/services/slices'),
       '@selectors': path.resolve(__dirname, './src/services/selectors'),
       '@store': path.resolve(__dirname, './src/services/store'),
-      '@utils-auth': path.resolve(__dirname, './src/utils/auth')
+      '@utils-auth': path.resolve(__dirname, './src/utils/auth'),
+      '@hooks': path.resolve(__dirname, './src/services/hooks')
     }
   },
   output: {

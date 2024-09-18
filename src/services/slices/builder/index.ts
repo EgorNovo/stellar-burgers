@@ -27,7 +27,7 @@ const builderSlice = createSlice({
     },
     removeIngredient(state, action) {
       state.ingredients = state.ingredients.filter(
-        (item) => item._id !== action.payload
+        (item) => item.id !== action.payload
       );
     },
     resetBuilder(state) {
