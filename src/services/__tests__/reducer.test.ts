@@ -51,6 +51,12 @@ describe('Тест редьюсера и слайсов', () => {
     expect(storeTest.getState()).toEqual(reducerINIT);
   });
 
+  it('Правильная настройка и работа reducer. Вызов reducer с undefined и экшеном, который не обрабатывается ни одним редьюсером', () => {
+    expect(rootReducer(undefined, { type: 'UNKNOWN_ACTION' })).toEqual(
+      reducerINIT
+    );
+  });
+
   test('Слайс bullder. Экшн для добавления ингредиента в бургер', () => {
     const addState = builderReducer(
       initialStateBuilder,
