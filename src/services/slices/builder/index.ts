@@ -15,6 +15,9 @@ export const initialState: TBuilderSlice = {
 const builderSlice = createSlice({
   name: 'builder',
   initialState,
+  selectors: {
+    getIngredients: (state) => state.ingredients
+  },
   reducers: {
     setIngredient(state, action) {
       const payload = { ...action.payload, id: v4() };
@@ -54,5 +57,5 @@ export const {
   upIngredients,
   downIngredients
 } = builderSlice.actions;
-export const {} = builderSlice.selectors;
+export const { getIngredients } = builderSlice.selectors;
 export const reducer = builderSlice.reducer;

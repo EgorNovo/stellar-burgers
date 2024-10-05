@@ -66,7 +66,7 @@ type TUserSlice = {
   isAuthorized: boolean;
 };
 
-const initialState: TUserSlice = {
+export const initialState: TUserSlice = {
   user: {
     name: '',
     email: ''
@@ -116,7 +116,7 @@ const authSlice = createSlice({
           email: ''
         };
 
-        removeTokens();
+        if (global.localStorage) removeTokens();
       })
       .addCase(logoutUserThunk.rejected, (state, action) => {
         console.log('Error logging out:', action.error);

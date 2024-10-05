@@ -40,7 +40,7 @@ type TOrderSlice = {
   orders: TOrder[];
 };
 
-const initialState: TOrderSlice = {
+export const initialState: TOrderSlice = {
   success: false,
   orderRequest: false,
   orderModalData: null,

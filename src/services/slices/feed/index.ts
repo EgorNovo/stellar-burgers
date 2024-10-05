@@ -13,7 +13,7 @@ type TFeedSlice = {
   data: TOrdersData;
 };
 
-const initialState: TFeedSlice = {
+export const initialState: TFeedSlice = {
   isLoading: false,
   error: '',
   data: {
@@ -43,15 +43,14 @@ export const feedSlice = createSlice({
       /* fetch all feeds */
       .addCase(getFeedsThunk.pending, (state) => {
         state.isLoading = true;
-        state.error = '';
       })
       .addCase(getFeedsThunk.fulfilled, (state, action) => {
         state.data = action.payload;
         state.isLoading = false;
       })
       .addCase(getFeedsThunk.rejected, (state, action) => {
-        console.log('Error fetching feeds:', action.error);
-        state.error = action.error;
+        state.isLoading = false;
+        state.error = action.payload as SerializedError;
       });
   }
 });

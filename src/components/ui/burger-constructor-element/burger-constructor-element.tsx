@@ -14,7 +14,10 @@ export const BurgerConstructorElementUI: FC<BurgerConstructorElementUIProps> =
       handleMoveDown,
       handleClose
     }) => (
-      <li className={`${styles.element} mb-4 mr-2`}>
+      <li
+        className={`${styles.element} mb-4 mr-2`}
+        data-cy={'burger-constructor-li'}
+      >
         <MoveButton
           handleMoveDown={handleMoveDown}
           handleMoveUp={handleMoveUp}
@@ -26,6 +29,7 @@ export const BurgerConstructorElementUI: FC<BurgerConstructorElementUIProps> =
             text={ingredient.name}
             price={ingredient.price}
             thumbnail={ingredient.image}
+            extraClass={'data-cy-ingredient-main-delete-button'}
             handleClose={handleClose}
           />
         </div>

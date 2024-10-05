@@ -1,0 +1,11 @@
+export const BURGER_CONSTRUCTOR_BUN = '[data-cy="burger-constructor-bun"]';
+export const ADD_INGREDIENT_BUTTON_BUNS = '[class~=add-ingredient-button-buns]';
+export const ADD_INGREDIENT_BUTTON_MAIN = '[class~=add-ingredient-button-main]';
+export const BURGER_CONSTRUCTOR_LI = `[data-cy="burger-constructor-li"]`;
+export const DELETE_BUTTON = '[class~=data-cy-ingredient-main-delete-button]';
+export const INGREDIENT = '[data-cy="ingredient"]';
+export const MODAL_CLOSE = '[data-cy="modal-close"]';
+export const MODAL_OVERLAY = '[data-cy="modal-overlay"]';
+export const ORDER_BUTTON = `[data-cy="burger-constructor-order-button"]`;
+export const ORDER_NUMBER = '[data-cy="order-number"]';
+export const MODAL_WINDOWS_SELECTOR = '[data-cy="modal-open"]';
