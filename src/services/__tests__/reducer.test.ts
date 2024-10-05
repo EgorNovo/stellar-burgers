@@ -35,12 +35,28 @@ import {
 } from '../slices/feed';
 
 import {
+  fetchUserThunk,
+  reducer as authReducer,
+  initialState as initialStateAuth,
+  loginUserThunk,
+  logoutUserThunk
+} from '../slices/auth';
+
+import {
   reducerINIT,
   ingredientData,
   ingredientsData,
   ingredientsDataReplace,
-  feedData
+  feedData,
+  orderData
 } from '../testData';
+
+import {
+  getOrdesThunk,
+  reducer as orderReducer,
+  initialState as initialStateOrder,
+  orderBurgerThunk
+} from '../slices/order';
 
 describe('Тест редьюсера и слайсов', () => {
   const storeTest = configureStore({
@@ -236,5 +252,137 @@ describe('Тест редьюсера и слайсов', () => {
         code: '404'
       }
     });
+  });
+
+  test('Слайс auth. Thunk - fetchUserThunk. Fulfilled', async () => {
+    const action = {
+      type: fetchUserThunk.fulfilled.type,
+      payload: {
+        user: {
+          name: 'name',
+          email: 'email@test.com'
+        },
+        isAuthenticated: true,
+        isAuthorized: true
+      }
+    };
+
+    const authState = authReducer(initialStateAuth, action);
+
+    expect(authState).toEqual({
+      user: {
+        name: 'name',
+        email: 'email@test.com'
+      },
+      isAuthenticated: true,
+      isAuthorized: true
+    });
+  });
+
+  test('Слайс auth. Thunk - fetchUserThunk. Pending', async () => {
+    const action = {
+      type: fetchUserThunk.pending.type,
+      payload: initialStateAuth
+    };
+
+    const authState = authReducer(initialStateAuth, action);
+
+    expect(authState).toEqual({
+      user: {
+        name: '',
+        email: ''
+      },
+      isAuthenticated: false,
+      isAuthorized: false
+    });
+  });
+
+  test('Слайс auth. Thunk - fetchUserThunk. Rejected', async () => {
+    const action = {
+      type: fetchUserThunk.rejected.type,
+      payload: initialStateAuth
+    };
+
+    const authState = authReducer(initialStateAuth, action);
+
+    expect(authState).toEqual({
+      user: {
+        name: '',
+        email: ''
+      },
+      isAuthenticated: false,
+      isAuthorized: true
+    });
+  });
+
+  test('Слайс auth. Thunk - loginUserThunk. Fulfilled', async () => {
+    const action = {
+      type: loginUserThunk.fulfilled.type,
+      payload: {
+        name: 'name',
+        email: 'email@test.com'
+      }
+    };
+
+    const authState = authReducer(initialStateAuth, action);
+
+    expect(authState).toEqual({
+      user: {
+        name: 'name',
+        email: 'email@test.com'
+      },
+      isAuthenticated: true,
+      isAuthorized: false
+    });
+  });
+
+  test('Слайс auth. Thunk - logoutUserThunk. Fulfilled', async () => {
+    const action = {
+      type: logoutUserThunk.fulfilled.type,
+      payload: null
+    };
+
+    const authState = authReducer(
+      {
+        user: {
+          name: 'name',
+          email: 'email@test.com'
+        },
+        isAuthenticated: true,
+        isAuthorized: true
+      },
+      action
+    );
+
+    expect(authState).toEqual({
+      user: {
+        name: '',
+        email: ''
+      },
+      isAuthenticated: false,
+      isAuthorized: true
+    });
+  });
+
+  test('Слайс order. Thunk - getOrdesThunk. Fulfilled', async () => {
+    const action = {
+      type: getOrdesThunk.fulfilled.type,
+      payload: orderData
+    };
+
+    const orderState = orderReducer(initialStateOrder, action);
+
+    expect(orderState.orders).toEqual(orderData);
+  });
+
+  test('Слайс order. Thunk - orderBurgerThunk. Fulfilled', async () => {
+    const action = {
+      type: orderBurgerThunk.fulfilled.type,
+      payload: orderData
+    };
+
+    const orderState = orderReducer(initialStateOrder, action);
+
+    expect(orderState.orderModalData).toEqual(orderData.order);
   });
 });

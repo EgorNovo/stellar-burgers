@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.06% </span>
+                <span class="strong">76.02% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>95/146</span>
+                <span class='fraction'>111/146</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">85.71% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>1/1</span>
+                <span class='fraction'>6/7</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">65.06% </span>
+                <span class="strong">76.02% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>95/146</span>
+                <span class='fraction'>111/146</span>
             </div>
         
             
@@ -299,35 +299,35 @@
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-no">&nbsp;</span>
@@ -423,7 +423,7 @@ type TUserSlice = {
   isAuthorized: boolean;
 };
 &nbsp;
-const initialState: TUserSlice = {
+export const initialState: TUserSlice = {
   user: {
     name: '',
     email: ''
@@ -445,20 +445,20 @@ const authSlice = createSlice({
       /*fetch user*/
       .addCase(fetchUserThunk.pending, (state) =&gt; {})
       .addCase(fetchUserThunk.fulfilled, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.isAuthenticated = true;</span>
-<span class="cstat-no" title="statement not covered" >        state.isAuthorized = true;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        state.user = action.payload.user;</span>
+        state.isAuthenticated = true;
+        state.isAuthorized = true;
+&nbsp;
+        state.user = action.payload.user;
       })
       .addCase(fetchUserThunk.rejected, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        console.log('Error fetching user:', action.error);</span>
-<span class="cstat-no" title="statement not covered" >        state.isAuthorized = true;</span>
+        console.log('Error fetching user:', action.error);
+        state.isAuthorized = true;
       })
       /*login user*/
       .addCase(loginUserThunk.pending, (state) =&gt; {})
       .addCase(loginUserThunk.fulfilled, (state, action) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.isAuthenticated = true;</span>
-<span class="cstat-no" title="statement not covered" >        state.user = action.payload;</span>
+        state.isAuthenticated = true;
+        state.user = action.payload;
       })
       .addCase(loginUserThunk.rejected, (state, action) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log('Error logging in:', action.error);</span>
@@ -466,14 +466,14 @@ const authSlice = createSlice({
       /*logout user*/
       .addCase(logoutUserThunk.pending, (state) =&gt; {})
       .addCase(logoutUserThunk.fulfilled, (state) =&gt; {
-<span class="cstat-no" title="statement not covered" >        state.isAuthenticated = false;</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        state.user = {</span>
-<span class="cstat-no" title="statement not covered" >          name: '',</span>
-<span class="cstat-no" title="statement not covered" >          email: ''</span>
-<span class="cstat-no" title="statement not covered" >        };</span>
-<span class="cstat-no" title="statement not covered" ></span>
-<span class="cstat-no" title="statement not covered" >        removeTokens();</span>
+        state.isAuthenticated = false;
+&nbsp;
+        state.user = {
+          name: '',
+          email: ''
+        };
+&nbsp;
+        if (global.localStorage) <span class="branch-0 cbranch-no" title="branch not covered" >removeTokens();</span>
       })
       .addCase(logoutUserThunk.rejected, (state, action) =&gt; {
 <span class="cstat-no" title="statement not covered" >        console.log('Error logging out:', action.error);</span>
@@ -508,7 +508,7 @@ export const reducer = authSlice.reducer;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-10-05T06:32:12.068Z
+                at 2024-10-05T10:26:08.665Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

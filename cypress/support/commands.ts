@@ -35,3 +35,8 @@
 //     }
 //   }
 // }
+declare namespace Cypress {
+  interface Chainable {
+    clickButton(name: string, flag?: boolean): Chainable<any>;
+  }
+}

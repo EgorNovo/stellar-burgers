@@ -12,6 +12,7 @@ export default defineConfig({
       };
       return config;
     },
-    defaultCommandTimeout: 10000
+    defaultCommandTimeout: 10000,
+    baseUrl: 'http://localhost:4000/'
   }
 });
