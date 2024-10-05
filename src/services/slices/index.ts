@@ -13,7 +13,8 @@ export {
   removeIngredient,
   resetBuilder,
   upIngredients,
-  downIngredients
+  downIngredients,
+  getIngredients
 } from './builder';
 
 export {
@@ -24,7 +25,7 @@ export {
   getTotalTodayOrders
 } from './feed';
 
-export { getIngredientsThunk } from './ingredients';
+export { getIngredientsThunk, initialState } from './ingredients';
 
 export {
   getOrdesThunk,

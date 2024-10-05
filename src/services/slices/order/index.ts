@@ -73,6 +73,7 @@ export const orderSlice = createSlice({
       })
       .addCase(orderBurgerThunk.fulfilled, (state, action) => {
         state.orderModalData = action.payload.order;
+        console.log(action.payload);
         state.orderRequest = false;
       })
       .addCase(orderBurgerThunk.rejected, (state, action) => {
